@@ -159,7 +159,7 @@ const optionSelect = "p-1 pl-5 w-[100%] md:w-[90%] bg-indigo-500 text-white text
       
 
       {!quizEnds ? (
-        <div className="quiz_box  p-5 flex flex-col gap-y-3">
+        <div className="quiz_box  p-5 flex flex-col gap-y-3 w-[90%]">
           <h4 className="text-2xl font-medium">
             Q <span >{currentQuestionIndex + 1}</span> {Ques}
           </h4>

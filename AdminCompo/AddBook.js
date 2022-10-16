@@ -2,37 +2,39 @@ import React, { useState } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Link from "next/link";
+import AddBookCompo from "./AddBookCompo";
 
 
 
 
 const AddBook = ({books}) => {
 
-  console.log(books);
-  const [AddBookCompo, setAddBookCompo] = useState(false);
+  // console.log(books);
+  const [isAddBookCompo, setIsAddBookCompo] = useState(false);
+  const [bookForEdit, setBookForEdit] = useState(null)
+  const [isBookEdit, setIsBookEdit] = useState(false);
 
-  const [bookData, setBookData] = useState({});
-
-
-
-  const handleChange = (e) => {
-    setBookData( {...bookData, [e.target.name]:e.target.value})
+  
+  const handleEditBook = (curBook) => {
+    setIsAddBookCompo(true)
+    setBookForEdit(curBook)
   }
 
-  const handleSubmit = async(e) => {
-      e.preventDefault()
+  const handleBookDelete = async(id) => {
+    const conf =  window.confirm("Do you really want to Delete Book ?")
 
-
-      const res = await fetch("//localhost:3000/api/admin/books", {
-        method: "POST",
+    if(conf){
+      const res = await fetch(`http://localhost:3000/api/admin/books`, {
+        method: "DELETE",
         headers: {
-          'Content-Type' : 'application/json'
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(bookData),
-      })
+        body: JSON.stringify(id),
+      });
+  
+      const response = await res.json();
 
-      const  response = await res.json()
-      if(response.success){
+      if (response.success) {
         toast.success(response.success, {
           position: "top-left",
           autoClose: 1000,
@@ -41,12 +43,9 @@ const AddBook = ({books}) => {
           pauseOnHover: true,
           draggable: true,
           progress: undefined,
-          });
-
-          setBookData({})
-
-
-      }else{
+        });
+  
+      } else {
         toast.error(response.error, {
           position: "top-left",
           autoClose: 1000,
@@ -55,11 +54,14 @@ const AddBook = ({books}) => {
           pauseOnHover: true,
           draggable: true,
           progress: undefined,
-          });
+        });
       }
-      
+    }
+  }
 
-
+  const ResetForm = () => {
+    console.log("reset Run........");
+    setBookForEdit()
   }
 
 
@@ -82,117 +84,20 @@ const AddBook = ({books}) => {
         </div>
         <div className="flex  items-center justify-end px-2">
           <button
-            onClick={() => setAddBookCompo((prev) => !prev)}
+            onClick={() => {setIsAddBookCompo((prev) => !prev), ResetForm(), setIsBookEdit(false) }}
             className="text-end  bg-[#6366f1] py-1 px-4 text-white mt-4"
           >
-            {!AddBookCompo ? "Add Book" : "Show Books"}
+            {!isAddBookCompo ? "Add Book" : "Show Books"}
           </button>
           
         </div>
       </div>
-      {AddBookCompo ? (
-        <div className="quizCard border-2 p-4 m-2">
-
-
-          <form onSubmit={handleSubmit}>
-            <div className="grid gap-2 mb-4 md:grid-cols-2">
-              <div className="mt-2">
-                <label
-                  className="block mb-0 text-md font-medium text-gray-900 dark:text-gray-300"
-                >
-                  Book Name
-                </label>
-                <input
-                  type="text"
-                  className="bg-gray-50 border  border-[#6366f1] text-gray-900 text-md rounded-lg focus:outline-none  block w-full p-2"
-                  placeholder="Enter question"
-                  required
-                  onChange={handleChange}
-                  name="book_name"
-                  value={bookData.book_name  || ""}
-                />
-              </div>
-              <div className="mt-2">
-                <label
-                  className="block mb-0 text-md font-medium text-gray-900 dark:text-gray-300"
-                >
-                  Auther
-                </label>
-                <input
-                  type="text"
-                  className="bg-gray-50 border border-[#6366f1] text-gray-900 text-md rounded-lg focus:outline-none  block w-full p-2"
-                  placeholder="Enter question"
-                  required
-                  onChange={handleChange}
-                  name="auther"
-                  value={bookData.auther  || ""}
-                />
-              </div>
-              <div className="mt-2">
-                <label
-                  className="block mb-0 text-md font-medium text-gray-900 dark:text-gray-300"
-                >
-                  Describtion
-                </label>
-                <input
-                  type="text"
-                  className="bg-gray-50 border border-[#6366f1] text-gray-900 text-md rounded-lg focus:outline-none block w-full p-2"
-                  placeholder="Enter question"
-                  required
-                  onChange={handleChange}
-                  name="desc"
-                  value={bookData.desc  || ""}
-                />
-              </div>
-              <div className="mt-2">
-                <label
-                  className="block mb-0 text-md font-medium text-gray-900 dark:text-gray-300"
-                >
-                  Full Describe
-                </label>
-                <input
-                  type="text"
-                  className="bg-gray-50 border border-[#6366f1] text-gray-900 text-md rounded-lg focus:outline-none block w-full p-2"
-                  placeholder="Enter question"
-                  required
-                  onChange={handleChange}
-                  name="full_desc"
-                  value={bookData.full_desc || ""}
-                />
-              </div>
-              <div className="mt-2">
-                <label
-                  className="block mb-0 text-md font-medium text-gray-900 dark:text-gray-300"
-                >
-                  Image URL
-                </label>
-                <input
-                  type="text"
-                  className="bg-gray-50 border border-[#6366f1] text-gray-900 text-md rounded-lg focus:outline-none block w-full p-2"
-                  placeholder="Enter question"
-                  required
-                  onChange={handleChange}
-                  name="img"
-                  value={bookData.img || ""}
-                />
-              </div>
-
-
-            </div>
-            <div className="flex justify-center items-center">
-              <button
-                type="submit"
-                className="  show-more bg-[#6366f1] py-2 px-4 text-white  mt-5 "
-              >
-                Add to All Books
-              </button>
-            </div>
-          </form>
-        </div>
+      {isAddBookCompo ? (
+       <AddBookCompo bookForEdit={bookForEdit} isBookEdit={isBookEdit} />
       ) : ( 
 
 
- <div className="books sm:py-12 ">
+ <div className="books sm:py-12 m-2 ">
          
          {
            books.map((curBook, id) => {
@@ -200,8 +105,8 @@ const AddBook = ({books}) => {
              const {book_name, auther, img, _id, desc} = curBook;
        
              return(
-             <section key={id} className="text-gray-600 body-font m-2 ">
-           <div className="container mx-auto flex  p-5 md:flex-row flex-col items-center border-2 rounded-md shadow-sm">
+             <section key={id} className="text-gray-600 body-font m-2 my-4 ">
+           <div className="container mx-auto flex  p-5 md:flex-row flex-col items-center border border-indigo-400  shadow-md hover:bg-gray-100 ease-out duration-300">
        
        
              <div className="lg:max-w-base lg:w-1/5 md:w-1/4 w-1/2 mb-10 md:mb-0 h-1/6">
@@ -224,15 +129,19 @@ const AddBook = ({books}) => {
                <div className="flex justify-center">
                  
                  <a href={`/books/${_id}`} target="new">
-                  <button className=" inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg">
+                  <button className=" inline-flex text-gray-700 bg-gray-200 border-0 py-1 px-5 focus:outline-none hover:bg-gray-300  text-lg">
                     View More
                   </button>
                   </a>
 
-                  <button className=" ml-4 inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+                  <button 
+                  onClick={()=> {handleEditBook(curBook), setIsBookEdit(true)}}
+                  className=" ml-4 inline-flex text-white bg-indigo-500 border-0 py-1 px-5 focus:outline-none hover:bg-indigo-600  text-lg">
                    Edit
                  </button>
-                  <button className=" ml-4  text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-gray-100 rounded text-lg">
+                  <button 
+                  onClick={()=> handleBookDelete(_id)}
+                  className=" ml-4  text-white bg-red-500 border-0 py-1 px-5 focus:outline-none hover:bg-red-600  text-lg">
                    Delete
                  </button>
                  

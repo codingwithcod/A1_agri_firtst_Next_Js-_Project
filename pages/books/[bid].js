@@ -15,7 +15,7 @@ const Book = ({book}) => {
          
    
         <section  className="text-gray-600 body-font m-2 ">
-      <div className="container mx-auto flex  p-5 md:flex-row flex-col items-center border-2 rounded-md shadow-sm">
+      <div className="container mx-auto flex  p-5 md:flex-row flex-col items-center border border-indigo-500 shadow-md">
   
   
         <div className="lg:max-w-base lg:w-1/5 md:w-1/4 w-1/2 mb-10 md:mb-0 h-1/6">

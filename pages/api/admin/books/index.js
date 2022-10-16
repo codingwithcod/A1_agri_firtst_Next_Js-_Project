@@ -17,6 +17,32 @@ const handler = async(req, res) => {
             res.status(200).json({error:"Book Not Added"})
         }
 
+    }else if(req.method === "PUT"){
+        try {
+            const {_id, ...restAll} = req.body; 
+            await BookModal.findByIdAndUpdate(_id, restAll)
+    
+            res.status(200).json({success:"Book Edited succefully"})
+            
+        } catch (error) {
+            console.log(error);
+            res.status(200).json({error:"Book Not Edited"})
+        }
+
+    } else if(req.method === "DELETE"){
+        try {
+            const id = req.body;
+
+            await BookModal.findByIdAndDelete(id)
+            res.status(200).json({success:"Book Deleted"})
+
+        } catch (error) {
+            console.log(error);
+            res.status(200).json({error:"Quiz Not Deleted"})
+        }
+
+       
+
     }else if(req.method === "GET"){
 
         try {

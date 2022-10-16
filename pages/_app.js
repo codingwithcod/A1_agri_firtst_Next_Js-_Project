@@ -4,6 +4,8 @@ import '../styles/globals.css';
 import LoadingBar from 'react-top-loading-bar';
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react';
+import Head from 'next/head'
+
 
 
 
@@ -49,6 +51,11 @@ function MyApp({ Component, pageProps }) {
 
 
   return <>
+      <Head>
+        <title>A1Agriculture ! The Agri world...</title>
+        <meta name="description" content="A1Agriculture ! welcome to the agri world" />
+        <link rel="icon" href="/favicon.png" />
+      </Head>
       <LoadingBar
         color='#6366f1'
         waitingTime='400'

@@ -19,6 +19,37 @@ const handler = async(req, res) => {
             res.status(200).json({error:"Quiz Not Added"})
         }
 
+    } else if(req.method === "PUT"){
+        try {
+            const {_id, ...RestAll} = req.body;
+             
+            
+            await QuizModal.findByIdAndUpdate(_id, RestAll,  {new:true})
+
+    
+            res.status(200).json({success:"Quiz Edited succefully"})
+            
+            
+        } catch (error) {
+            console.log(error);
+            res.status(200).json({error:"Quiz Not Edited"})
+        }
+    } else if(req.method === "DELETE"){
+        try {
+            const id = req.body;
+
+            await QuizModal.findByIdAndDelete(id)
+            res.status(200).json({success:"Quiz Deleted"})
+
+             
+            
+            
+        } catch (error) {
+            console.log(error);
+            res.status(200).json({error:"Quiz Not Deleted"})
+        }
+
+
     }else if(req.method === "GET"){
 
         try {
