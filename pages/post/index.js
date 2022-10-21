@@ -1,11 +1,13 @@
 import React from 'react'
+import Link from 'next/link'
 
 const Post = () => {
   return (
     <div>
-      <section className="text-gray-600 body-font overflow-hidden">
+      <section  className="text-gray-600 body-font overflow-hidden">
   <div className="container px-5 py-24 mx-auto">
-    <div className="-my-8 divide-y-2 divide-gray-100">
+    <div className="-my-8 divide-y-2 divide-gray-100 cursor-pointer">
+      <Link href="/post/postid">
       <div className="py-8 flex flex-wrap md:flex-nowrap">
         <div className="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col">
           <span className="font-semibold title-font text-gray-700">CATEGORY</span>
@@ -22,6 +24,8 @@ const Post = () => {
           </a>
         </div>
       </div>
+      </Link>
+      <Link href="/post/postid">
       <div className="py-8 flex flex-wrap md:flex-nowrap">
         <div className="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col">
           <span className="font-semibold title-font text-gray-700">CATEGORY</span>
@@ -38,6 +42,9 @@ const Post = () => {
           </a>
         </div>
       </div>
+      </Link>
+
+      <Link href="/post/postid">
       <div className="py-8 flex flex-wrap md:flex-nowrap">
         <div className="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col">
           <span className="font-semibold title-font text-gray-700">CATEGORY</span>
@@ -54,6 +61,9 @@ const Post = () => {
           </a>
         </div>
       </div>
+      </Link>
+
+
     </div>
   </div>
 </section>
