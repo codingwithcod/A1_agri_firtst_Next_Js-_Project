@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import axios from 'axios';
 
 
 
@@ -17,6 +18,7 @@ const Login = () => {
 
  const [formData, setFormData] = useState({});
 
+ const API = axios.create({baseURL:`${process.env.NEXT_PUBLIC_HOST}`});
 
 
  const handleChange = (e) => {
@@ -30,17 +32,23 @@ const Login = () => {
         if(formData.password !== formData.cpassword){
             setIsPassMatch(false);
         }else{
-            // console.log("signin " , formData);
-            // setIsPassMatch(true);
-          let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/signup`, {
-            method: "POST",
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formData),
-          })
 
-          let response = await res.json()
+          const res = await API.post('/api/signup', formData);
+
+
+          // fetch methods ------------------------
+          // let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/signup`, {
+          //   method: "POST",
+          //   headers: {
+          //     'Content-Type': 'application/json',
+          //   },
+          //   body: JSON.stringify(formData),
+          // })
+          // let response = await res.json();
+
+
+
+          let response = await res.data
 
           console.log(response);
           if(response.success){
@@ -72,15 +80,23 @@ const Login = () => {
          
         }
     }else{
-      let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/login`, {
-        method: "POST",
-        headers: {
-          'Content-Type' : 'application/json',
-          },
-          body: JSON.stringify(formData),
-      })
 
-      let response = await res.json();
+      const res = await API.post('/api/login', formData);
+      console.log("👉 ~ file: login.js ~ line 85 ~ handleSubmit ~ res", res)
+      
+      
+      // by fetch methods --------------------
+      // let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/login`, {
+      //   method: "POST",
+      //   headers: {
+      //     'Content-Type' : 'application/json',
+      //     },
+      //     body: JSON.stringify(formData),
+      // })
+      // let response = await res.json();
+
+      let response = await res.data
+
 
       console.log(response);
       if(response.success){

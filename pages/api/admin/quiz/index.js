@@ -1,5 +1,6 @@
 import QuizModal from '../../../../modals/quizModal';
-import connectDb from '../../../../middleware/mongooseCon'
+import connectDb from '../../../../middleware/mongooseCon';
+
 
 
 

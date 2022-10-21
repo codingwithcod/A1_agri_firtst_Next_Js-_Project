@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import SubjectCardQuizPage from '../../components/SubjectCardQuizPage';
+import axios from 'axios';
 
 
 const Quiz = ({quiz}) => {
@@ -39,8 +40,13 @@ const Quiz = ({quiz}) => {
 export async function getServerSideProps() {
     
 
-  const resQuiz = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/admin/quiz/`)
-    const quiz = await resQuiz.json()
+  // const resQuiz = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/admin/quiz/`)
+  // const quiz = await resQuiz.json()
+  
+  // with axios
+  const resAxios = await axios.get(`${process.env.NEXT_PUBLIC_HOST}/api/admin/quiz/`)
+  const quiz = await resAxios.data
+  console.log("👉 ~ file: index.js ~ line 49 ~ getServerSideProps ~ quiz", quiz)
   
 
   return {
