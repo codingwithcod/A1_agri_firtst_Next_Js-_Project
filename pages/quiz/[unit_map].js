@@ -34,7 +34,7 @@ export async function getServerSideProps({params:{unit_map}}) {
     
     // console.log(unit_map);
 
-    const res = await fetch(`${process.env.BASE_URL}/api/admin/quiz/${unit_map}`)
+    const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/admin/quiz/${unit_map}`)
     const unitMap = await res.json();
     // console.log(unitMap);
 

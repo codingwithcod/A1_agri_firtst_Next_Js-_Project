@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 
 
 
-const profile = () => {
+const Profile = () => {
 
   const router = useRouter()
 
@@ -53,9 +53,9 @@ const profile = () => {
                 </div>
         </div>
 
-        <div className="show-more bg-[#6366f1] py-2 px-4 text-white mt-5">
+        <button className="show-more bg-[#6366f1] py-2 px-4 text-white mt-5 cursor-pointer">
           Show Full Analytics 
-        </div>
+        </button>
 
       </div>
     </div>
@@ -63,4 +63,4 @@ const profile = () => {
   )
 }
 
-export default profile
+export default Profile

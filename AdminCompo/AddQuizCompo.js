@@ -31,7 +31,7 @@ const AddQuizCompo = ({quizForEdit, isEdit}) => {
 
         const {updatedAt, createdAt, ...otherAll} = quizData;
 
-        const res = await fetch(`http://localhost:3000/api/admin/quiz`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/admin/quiz`, {
             method: "PUT",
             headers: {
               "Content-Type": "application/json",
@@ -68,7 +68,7 @@ const AddQuizCompo = ({quizForEdit, isEdit}) => {
 
       }else{
 
-        const res = await fetch(`http://localhost:3000/api/admin/quiz`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/admin/quiz`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

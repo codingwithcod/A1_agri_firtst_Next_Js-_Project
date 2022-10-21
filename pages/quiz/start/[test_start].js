@@ -73,7 +73,7 @@ const QuizFront = ({unitTest}) => {
 export async function getServerSideProps({params:{test_start}}) {
     
 
-    const res = await fetch(`${process.env.BASE_URL}/api/admin/quiz/start/${test_start}`)
+    const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/admin/quiz/start/${test_start}`)
     const unitTest = await res.json();
     // console.log(unitTest);
    

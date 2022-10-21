@@ -39,7 +39,7 @@ const Quiz = ({quiz}) => {
 export async function getServerSideProps() {
     
 
-  const resQuiz = await fetch(`${process.env.BASE_URL}/api/admin/quiz/`)
+  const resQuiz = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/admin/quiz/`)
     const quiz = await resQuiz.json()
   
 

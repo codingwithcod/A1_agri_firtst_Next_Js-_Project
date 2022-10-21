@@ -67,7 +67,7 @@ const Book = ({book}) => {
 export async function getServerSideProps({params:{bid}}) {
     
 
-    const res = await fetch(`${process.env.BASE_URL}/api/admin/books/${bid}`)
+    const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/admin/books/${bid}`)
     const book = await res.json();
     // console.log(book);
 

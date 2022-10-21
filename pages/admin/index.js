@@ -9,7 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 
-const adminLogin = () => {
+const AdminLogin = () => {
 
   const router = useRouter();
 
@@ -25,7 +25,7 @@ const adminLogin = () => {
         e.preventDefault();
 
     
-      let res = await fetch("http://localhost:3000/api/admin/login", {
+      let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/admin/login`, {
         method: "POST",
         headers: {
           'Content-Type' : 'application/json',
@@ -169,4 +169,4 @@ const adminLogin = () => {
   );
 };
 
-export default adminLogin;
+export default AdminLogin;

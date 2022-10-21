@@ -26,7 +26,7 @@ const AddQuiz = ({quiz}) => {
     const conf =  window.confirm("Do you really want to Delete Quiz ?")
 
     if(conf){
-      const res = await fetch(`http://localhost:3000/api/admin/quiz`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/admin/quiz`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",

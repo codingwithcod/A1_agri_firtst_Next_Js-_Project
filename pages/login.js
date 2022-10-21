@@ -9,7 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 
-const login = () => {
+const Login = () => {
 
   const router = useRouter();
   const [isSignup, setIsSignup] = useState(false);
@@ -32,7 +32,7 @@ const login = () => {
         }else{
             // console.log("signin " , formData);
             // setIsPassMatch(true);
-          let res = await fetch("http://localhost:3000/api/signup", {
+          let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/signup`, {
             method: "POST",
             headers: {
               'Content-Type': 'application/json',
@@ -72,7 +72,7 @@ const login = () => {
          
         }
     }else{
-      let res = await fetch("http://localhost:3000/api/login", {
+      let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/login`, {
         method: "POST",
         headers: {
           'Content-Type' : 'application/json',
@@ -281,4 +281,4 @@ const login = () => {
   );
 };
 
-export default login;
+export default Login;

@@ -10,7 +10,7 @@ import { useRouter } from 'next/router';
 
 
 
-const dashboard = ({books, quiz}) => {
+const Dashboard = ({books, quiz}) => {
 
  
 
@@ -144,9 +144,9 @@ const dashboard = ({books, quiz}) => {
  // for the books
 export async function getServerSideProps() {
 
-    const res = await fetch(`${process.env.BASE_URL}/api/admin/books/`)
+    const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/admin/books/`)
     const books = await res.json()
-    const resQuiz = await fetch(`${process.env.BASE_URL}/api/admin/quiz/`)
+    const resQuiz = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/admin/quiz/`)
     const quiz = await resQuiz.json()
   
     return {
@@ -165,4 +165,4 @@ export async function getServerSideProps() {
 
 
 
-export default dashboard;
+export default Dashboard;

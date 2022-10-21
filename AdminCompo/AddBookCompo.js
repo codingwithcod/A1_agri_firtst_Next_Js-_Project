@@ -30,7 +30,7 @@ const AddBookCompo = ({bookForEdit, isBookEdit}) => {
         const {updatedAt, createdAt, ...otherAll} = bookData;
 
 
-            const res = await fetch("//localhost:3000/api/admin/books", {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/admin/books`, {
           method: "PUT",
           headers: {
             'Content-Type' : 'application/json'
@@ -67,7 +67,7 @@ const AddBookCompo = ({bookForEdit, isBookEdit}) => {
 
         }else{
 
-            const res = await fetch("//localhost:3000/api/admin/books", {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/admin/books`, {
           method: "POST",
           headers: {
             'Content-Type' : 'application/json'

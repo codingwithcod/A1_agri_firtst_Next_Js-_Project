@@ -13,6 +13,7 @@ const AddBook = ({books}) => {
   const [isAddBookCompo, setIsAddBookCompo] = useState(false);
   const [bookForEdit, setBookForEdit] = useState(null)
   const [isBookEdit, setIsBookEdit] = useState(false);
+  
 
   
   const handleEditBook = (curBook) => {
@@ -24,7 +25,7 @@ const AddBook = ({books}) => {
     const conf =  window.confirm("Do you really want to Delete Book ?")
 
     if(conf){
-      const res = await fetch(`http://localhost:3000/api/admin/books`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/admin/books`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
