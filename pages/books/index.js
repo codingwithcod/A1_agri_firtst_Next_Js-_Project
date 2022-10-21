@@ -1,5 +1,7 @@
 import Link from "next/link";
 import React from "react";
+import axios from 'axios';
+
 
 
 
@@ -78,14 +80,20 @@ return (
 
 export async function getStaticProps() {
 
-  const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/admin/books/`)
-  const books = await res.json()
+
+  // const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/admin/books/`)
+  // const books = await res.json()
+  
+  
+  const resAxios = await axios.get(`${process.env.NEXT_PUBLIC_HOST}/api/admin/books/`)
+  const books = await resAxios.data
+
 
   return {
     props: {
       books:books,
     },
-    fallback: true,
+    
   }
 }
 

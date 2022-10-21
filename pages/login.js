@@ -82,7 +82,6 @@ const Login = () => {
     }else{
 
       const res = await API.post('/api/login', formData);
-      console.log("👉 ~ file: login.js ~ line 85 ~ handleSubmit ~ res", res)
       
       
       // by fetch methods --------------------

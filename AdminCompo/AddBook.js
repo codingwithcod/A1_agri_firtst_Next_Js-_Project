@@ -106,7 +106,7 @@ const AddBook = ({books}) => {
              const {book_name, auther, img, _id, desc} = curBook;
        
              return(
-             <section key={id} className="text-gray-600 body-font m-2 my-4 ">
+             <section key={id} className="text-gray-600 body-font m-2 my-4 p-4">
            <div className="container mx-auto flex  p-5 md:flex-row flex-col items-center border border-indigo-400  shadow-md hover:bg-gray-100 ease-out duration-300">
        
        
@@ -142,7 +142,7 @@ const AddBook = ({books}) => {
                  </button>
                   <button 
                   onClick={()=> handleBookDelete(_id)}
-                  className=" ml-4  text-white bg-red-500 border-0 py-1 px-5 focus:outline-none hover:bg-red-600  text-lg">
+                  className=" ml-4  text-red-500  border-0 py-1 px-5 focus:outline-none hover:bg-[#0000]  text-lg">
                    Delete
                  </button>
                  

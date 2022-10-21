@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import axios from 'axios';
 
 
 
@@ -15,6 +16,7 @@ const AdminLogin = () => {
 
  const [formData, setFormData] = useState({});
 
+ const API = axios.create({baseURL:`${process.env.NEXT_PUBLIC_HOST}`});
 
 
  const handleChange = (e) => {
@@ -24,16 +26,19 @@ const AdminLogin = () => {
  const handleSubmit = async(e) => {
         e.preventDefault();
 
+        const res = await API.post('/api/admin/login', formData);
     
-      let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/admin/login`, {
-        method: "POST",
-        headers: {
-          'Content-Type' : 'application/json',
-          },
-          body: JSON.stringify(formData),
-      })
+      // let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/admin/login`, {
+      //   method: "POST",
+      //   headers: {
+      //     'Content-Type' : 'application/json',
+      //     },
+      //     body: JSON.stringify(formData),
+      // })
+      // let response = await res.json();
+      
 
-      let response = await res.json();
+      let response = await res.data
 
       console.log(response);
       if(response.success){
