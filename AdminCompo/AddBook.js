@@ -142,7 +142,7 @@ const AddBook = ({books}) => {
                  </button>
                   <button 
                   onClick={()=> handleBookDelete(_id)}
-                  className=" ml-4  text-red-500  border-0 py-1 px-5 focus:outline-none hover:bg-[#0000]  text-lg">
+                  className=" ml-4  text-white bg-red-600  border-0 py-1 px-5 focus:outline-none   text-lg">
                    Delete
                  </button>
                  

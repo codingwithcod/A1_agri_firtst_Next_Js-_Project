@@ -126,7 +126,7 @@ const AddQuiz = ({quiz}) => {
                   </button>
                   <button
                   onClick={()=> handleDeleteQuiz(_id)} 
-                  className=" ml-4  text-white bg-red-500 border-0  px-3 focus:outline-none hover:bg-red-700  text-lg">
+                  className=" ml-4  text-white bg-red-600  border-0  px-3 focus:outline-none hover:bg-black  text-lg">
                    Delete
                  </button>
             </div>

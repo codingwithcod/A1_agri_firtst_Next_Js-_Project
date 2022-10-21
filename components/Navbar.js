@@ -22,7 +22,7 @@ const Navbar = ({user}) => {
                 <CgClose onClick={() => setOpenMenu(false)} 
                 className='border-2 border-white text-white rounded-sm'/>
             </div>
-            <ul className=' flex flex-col  pt-2 pl-3 space-y-2  h-[100vh]  text-white font-bold text-2xl'>
+            <ul className=' flex flex-col  pt-2 pl-3 space-y-2  h-[95vh]  text-white font-bold text-2xl'>
                         <li></li>
                         <Link href='/'><a> <li onClick={() => setOpenMenu(false)} >Home</li></a></Link>
                         <hr />
@@ -36,11 +36,13 @@ const Navbar = ({user}) => {
                         <hr />
                         <Link href='/profile'><a> <li onClick={() => setOpenMenu(false)} >Profile</li></a></Link>
                     </ul>
-
-                    <div className='bottom-logo absolute bottom-[4.5rem] left-3 '>
+                    <Link href='/'>
+                    <div className='bottom-logo absolute bottom-[5.5rem] left-3 '>
+                    
                     <span className=' font-bold text-2xl text-[#6366f1] bg-white  rounded-full px-2 border-[#6366f1]'>A1</span>
                 <span className=" text-3xl font-bold text-white">Agriculture</span>
                     </div>
+                    </Link>
             </div>
 
             <div className="logo flex justify-center  items-center md:justify-start text-2xl  w-[70%]">
