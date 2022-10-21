@@ -18,7 +18,7 @@ const Footer = () => {
     </div>
     <div className="flex-grow flex flex-wrap md:pl-20 -mb-10 md:mt-0 mt-10 md:text-left text-center">
       <div className="lg:w-1/4 md:w-1/2 w-full px-4">
-        <h2 className="title-font font-semibold text-gray-900 tracking-widest text-sm mb-2">CATEGORIES</h2>
+        <h2 className="title-font font-semibold text-gray-900 tracking-widest text-sm mb-2">PAGE</h2>
         <nav className="list-none mb-6">
           <li>
             <a className="text-gray-600 hover:text-gray-800">Home</a>
@@ -35,53 +35,37 @@ const Footer = () => {
         </nav>
       </div>
       <div className="lg:w-1/4 md:w-1/2 w-full px-4">
-        <h2 className="title-font font-semibold text-gray-900 tracking-widest text-sm mb-2">CATEGORIES</h2>
+        <h2 className="title-font font-semibold text-gray-900 tracking-widest text-sm mb-2">TRENDING BLOGS</h2>
         <nav className="list-none mb-6">
           <li>
-            <a className="text-gray-600 hover:text-gray-800">First Link</a>
+            <a className="text-gray-600 hover:text-gray-800">new Technologies</a>
           </li>
           <li>
-            <a className="text-gray-600 hover:text-gray-800">Second Link</a>
+            <a className="text-gray-600 hover:text-gray-800">Irrigation sector</a>
           </li>
           <li>
-            <a className="text-gray-600 hover:text-gray-800">Third Link</a>
+            <a className="text-gray-600 hover:text-gray-800">gorvermnt in Ag</a>
           </li>
           <li>
-            <a className="text-gray-600 hover:text-gray-800">Fourth Link</a>
+            <a className="text-gray-600 hover:text-gray-800">Competative Exam</a>
           </li>
         </nav>
       </div>
+      
       <div className="lg:w-1/4 md:w-1/2 w-full px-4">
-        <h2 className="title-font font-semibold text-gray-900 tracking-widest text-sm mb-2">CATEGORIES</h2>
-        <nav className="list-none mb-6">
-          <li>
-            <a className="text-gray-600 hover:text-gray-800">First Link</a>
-          </li>
-          <li>
-            <a className="text-gray-600 hover:text-gray-800">Second Link</a>
-          </li>
-          <li>
-            <a className="text-gray-600 hover:text-gray-800">Third Link</a>
-          </li>
-          <li>
-            <a className="text-gray-600 hover:text-gray-800">Fourth Link</a>
-          </li>
-        </nav>
-      </div>
-      <div className="lg:w-1/4 md:w-1/2 w-full px-4">
-        <h2 className="title-font font-semibold text-gray-900 tracking-widest text-sm mb-2">CATEGORIES</h2>
+        <h2 className="title-font font-semibold text-gray-900 tracking-widest text-sm mb-2">BOOKS</h2>
         <nav className="list-none mb-6 ">
           <li>
-            <a className="text-gray-600 hover:text-gray-800">First Link</a>
+            <a className="text-gray-600 hover:text-gray-800">Nemraj sunda</a>
           </li>
           <li>
-            <a className="text-gray-600 hover:text-gray-800">Second Link</a>
+            <a className="text-gray-600 hover:text-gray-800">Sr Kantwa</a>
           </li>
           <li>
-            <a className="text-gray-600 hover:text-gray-800">Third Link</a>
+            <a className="text-gray-600 hover:text-gray-800">for Vaccanies</a>
           </li>
           <li>
-            <a className="text-gray-600 hover:text-gray-800">Fourth Link</a>
+            <a className="text-gray-600 hover:text-gray-800">Top 10 Agri </a>
           </li>
         </nav>
       </div>
