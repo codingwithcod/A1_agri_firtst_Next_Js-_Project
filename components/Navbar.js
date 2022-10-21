@@ -43,7 +43,7 @@ const Navbar = ({user}) => {
                 <div className='text-center p-2'>
                 <span className=" text-lg font-semibold text-white py-5"> welcome to the Agriworld </span>
                 <br />
-                <span className=" text-sm text-white  "> it's make easier way for the Agriculture compitive examination </span>
+                <span className=" text-sm text-white  "> it is make easier way for the Agriculture compitive examination </span>
                 </div>
 
                     </div>
