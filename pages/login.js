@@ -97,9 +97,11 @@ const Login = () => {
       let response = await res.data
 
 
-      console.log(response);
+      // console.log(response);
       if(response.success){
-          localStorage.setItem('A1NextProfile', response.token)
+          localStorage.setItem('A1NextProfile', response.token )
+          // localStorage.setItem('A1NextProfile', response.user.json())
+          
 
         toast.success(response.success, {
           position: "top-left",

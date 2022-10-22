@@ -37,7 +37,7 @@ const Navbar = ({user}) => {
                         <Link href='/profile'><a> <li onClick={() => setOpenMenu(false)} >Profile</li></a></Link>
                     </ul>
                     <Link href='/'>
-                    <div onClick={()=> setOpenMenu(false)} className='bottom-logo absolute bottom-[3.5rem] left-3 '>
+                    <div onClick={()=> setOpenMenu(false)} className='bottom-logo absolute bottom-[1.5rem] left-3 '>
                     <span className=' font-bold text-2xl text-[#6366f1] bg-white  rounded-full px-2 border-[#6366f1]'>A1</span>
                 <span className=" text-3xl font-bold text-white">Agriculture</span>
                 <div className='text-center p-2'>

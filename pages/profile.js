@@ -1,11 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRouter } from "next/router";
+import jwt from 'jsonwebtoken';
+
 
 
 
 const Profile = () => {
 
   const router = useRouter()
+
+  const [user, setUser] = useState();
+
+  
+  
+
+  useEffect(() => {
+    // const user = localStorage.getItem('A1NextProfile')
+   
+    // setUser(token)
+    
+    
+   
+  }, []);
 
 
   return (

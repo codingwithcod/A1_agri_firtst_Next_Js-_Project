@@ -1,16 +1,35 @@
-import React from 'react'
+import { useRouter } from 'next/router';
+import React, { useEffect } from 'react';
 
-const PostId = () => {
+
+const PostId = ({post}) => {
+
+  const router = useRouter()
+  
+  useEffect(() => {
+    const rukojara = async() => {
+      if(post.error === true){
+        await router.push('/404')
+       }
+    } 
+    rukojara()   
+   
+  }, []);
+
+  const {title, category, img1, img2, img3, home_para, para_1, para_2, para_3} = post;
+
+
+  
   return (
     <div>
 
         <section className="text-gray-600 body-font overflow-hidden">
   <div className="container px-5 py-24 mx-auto">
     <div className="lg:w-4/5 mx-auto flex flex-wrap">
-      <img alt="ecommerce" className="lg:w-1/2 w-full  h-64 object-cover object-center rounded" src="https://dummyimage.com/400x400"/>
+      <img alt="ecommerce" className="lg:w-1/2 w-full  h-64 object-cover object-center rounded" src={img1}/>
       <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
-        <h2 className="text-sm title-font text-gray-500 tracking-widest">BRAND NAME</h2>
-        <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">The Catcher in the Rye</h1>
+        <h2 className="text-sm title-font text-gray-500 tracking-widest">{category}</h2>
+        <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">{title}</h1>
         <div className="flex mb-4">
           <span className="flex items-center">
             <svg fill="currentColor" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 text-indigo-500" viewBox="0 0 24 24">
@@ -48,20 +67,40 @@ const PostId = () => {
             </a>
           </span>
         </div>
-        <p className="leading-relaxed">Fam locavore kickstarter distillery. Mixtape chillwave tumeric sriracha taximy chia microdosing tilde DIY. XOXO fam indxgo juiceramps cornhole raw denim forage brooklyn. Everyday carry +1 seitan poutine tumeric. Gastropub blue bottle austin listicle pour-over, neutra jean shorts keytar banjo tattooed umami cardigan.</p>
+        <p className="leading-relaxed indent-10">{home_para}</p>
        
       </div>
     </div>
-    <p className="leading-relaxed">Fam locavore kickstarter distillery. Mixtape chillwave tumeric sriracha taximy chia microdosing tilde DIY. XOXO fam indxgo juiceramps cornhole raw denim forage brooklyn. Everyday carry +1 seitan poutine tumeric. Gastropub blue bottle austin listicle pour-over, neutra jean shorts keytar banjo tattooed umami cardigan.</p>
+    <p className="leading-loose tracking-wide indent-10">{para_1}</p>
     <br />
-    <div className='flex justify-center'>
-    <img alt="ecommerce" className="lg:w-1/2 text-center w-full  h-64 object-cover object-center rounded" src="https://dummyimage.com/400x400"/>
-    </div>
+    
+    {
+      (img2 !== "") ? <div className='flex justify-center mb-5'>
+            <img alt="ecommerce" className="lg:w-1/2 text-center w-full  h-64 object-cover object-center rounded" src={img2}/>
+            </div> 
+            :
+            <br/>
+    }
+    
+    {
+      (para_2 !== "") ? <p className="lleading-loose tracking-wide indent-10">{para_2}</p> : <br/>
+                    
+    }
+    <br/>
 
-    <p className="leading-relaxed">Fam locavore kickstarter distillery. Mixtape chillwave tumeric sriracha taximy chia microdosing tilde DIY. XOXO fam indxgo juiceramps cornhole raw denim forage brooklyn. Everyday carry +1 seitan poutine tumeric. Gastropub blue bottle austin listicle pour-over, neutra jean shorts keytar banjo tattooed umami cardigan.</p>
+    {
+      (img3 !== "") ? <div className='flex justify-center mb-5'>
+            <img alt="ecommerce" className="lg:w-1/2 text-center w-full  h-64 object-cover object-center rounded" src={img3}/>
+            </div> 
+            :
+            <br/>
+    }
 
-    <br />
-    <p className="leading-relaxed">Fam locavore kickstarter distillery. Mixtape chillwave tumeric sriracha taximy chia microdosing tilde DIY. XOXO fam indxgo juiceramps cornhole raw denim forage brooklyn. Everyday carry +1 seitan poutine tumeric. Gastropub blue bottle austin listicle pour-over, neutra jean shorts keytar banjo tattooed umami cardigan. Fam locavore kickstarter distillery. Mixtape chillwave tumeric sriracha taximy chia microdosing tilde DIY. XOXO fam indxgo juiceramps cornhole raw denim forage brooklyn. Everyday carry +1 seitan poutine tumeric. Gastropub blue bottle austin listicle pour-over, neutra jean shorts keytar banjo tattooed umami cardigan</p>
+    {
+      (para_3 !== "") ? <p className="leading-loose tracking-wide indent-10">{para_3}</p> : <br/>
+                    
+    }
+
 
 
 
@@ -73,6 +112,21 @@ const PostId = () => {
 
     </div>
   )
+};
+
+
+export async function getServerSideProps({params:{post_slug}}){
+
+  const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/admin/post/${post_slug}`)
+
+  const post = await res.json();
+
+  return{
+    props:{
+      post
+    }
+  }
 }
+
 
 export default PostId
