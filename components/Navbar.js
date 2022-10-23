@@ -52,7 +52,7 @@ const Navbar = ({user}) => {
 
             <div className="logo flex justify-center  items-center md:justify-start text-2xl  w-[70%]">
                 <div className='cursor-pointer'>
-                <span className=' font-bold text-2xl bg-[#6366f1] text-white  rounded-full px-2 border-[#6366f1]'>A1</span>
+                <span className=' font-bold text-2xl bg-gradient-to-tr from-indigo-800 to-indigo-500 text-white  rounded-full px-2 border-[#6366f1]'>A1</span>
                 <span className=" text-3xl font-bold">Agriculture</span>
                 </div>
                 <div className='nav-items  hidden md:flex justify-center   h-[100%] pb-1 w-full  ml-5 '>

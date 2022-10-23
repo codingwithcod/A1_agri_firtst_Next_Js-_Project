@@ -60,11 +60,8 @@ const Post = ({post}) => {
 
 export async function getStaticProps() {
 
-
-
+  const resAxios = await axios.get(`${process.env.NEXT_PUBLIC_HOST}/api/admin/post`)
   
-  
-  const resAxios = await axios.get(`${process.env.NEXT_PUBLIC_HOST}/api/admin/post/`)
   const post = await resAxios.data
   
 
