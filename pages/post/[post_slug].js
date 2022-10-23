@@ -1,5 +1,7 @@
 import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
+import axios from 'axios';
+
 
 
 const PostId = ({post}) => {
@@ -117,9 +119,14 @@ const PostId = ({post}) => {
 
 export async function getServerSideProps({params:{post_slug}}){
 
-  const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/admin/post/${post_slug}`)
+  // const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/admin/post/${post_slug}`)
 
-  const post = await res.json();
+  // const post = await res.json();
+
+  
+  
+  const resAxios = await axios.get(`${process.env.NEXT_PUBLIC_HOST}/api/admin/post/${post_slug}`)
+  const post = await resAxios.data
 
   return{
     props:{

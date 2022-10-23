@@ -22,7 +22,7 @@ const handler = async(req, res) => {
             
         } catch (error) {
             console.log(error);
-            res.status(200).json({error:"Post Not Added"})
+            res.status(401).json({error:"Post Not Added"})
         }
 
     }else if(req.method === "PUT"){
@@ -42,7 +42,7 @@ const handler = async(req, res) => {
             
         } catch (error) {
             console.log(error);
-            res.status(200).json({error:"Post Not Edited"})
+            res.status(400).json({error:"Post Not Edited"})
         }
 
     } else if(req.method === "DELETE"){
@@ -54,7 +54,7 @@ const handler = async(req, res) => {
 
         } catch (error) {
             console.log(error);
-            res.status(200).json({error:"Post Not Deleted"})
+            res.status(400).json({error:"Post Not Deleted"})
         }
 
        

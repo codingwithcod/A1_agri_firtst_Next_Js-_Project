@@ -46,7 +46,6 @@ export async function getServerSideProps() {
   // with axios
   const resAxios = await axios.get(`${process.env.NEXT_PUBLIC_HOST}/api/admin/quiz/`)
   const quiz = await resAxios.data
-  console.log("👉 ~ file: index.js ~ line 49 ~ getServerSideProps ~ quiz", quiz)
   
 
   return {

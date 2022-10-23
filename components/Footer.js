@@ -10,7 +10,7 @@ const Footer = () => {
     <div className="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left ">
     <Link href='/'>
       <a  className="flex title-font font-medium items-center md:justify-start justify-center text-gray-900 ">
-        <span className=' font-bold text-3xl bg-[#6366f1] text-white  rounded-full py-1 px-2 border-[#6366f1]'>A1</span>
+        <span className=' font-bold text-3xl bg-gradient-to-tr from-indigo-600 to-blue-500 text-white  rounded-full py-1 px-2 '>A1</span>
         <span className=" text-3xl font-bold">Agriculture</span>
       </a>
       </Link>
