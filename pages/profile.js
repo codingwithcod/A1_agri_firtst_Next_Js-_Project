@@ -5,23 +5,14 @@ import jwt from 'jsonwebtoken';
 
 
 
-const Profile = () => {
-
+const Profile = ({user}) => {
+  
+  
   const router = useRouter()
-
-  const [user, setUser] = useState();
-
   
   
 
-  useEffect(() => {
-    // const user = localStorage.getItem('A1NextProfile')
-   
-    // setUser(token)
-    
-    
-   
-  }, []);
+  
 
 
   return (
@@ -29,13 +20,13 @@ const Profile = () => {
     <div className="main_container flex flex-col justify-start sm:m-5 m-1  bg-gray-50 rounded-md">
       <div className="flex  p-2 w-[100%] items-center bg-gray-100 ">
         <img className='w-24' src="/profilePic.svg" alt="profileImg" />
-        <span className='ml-8 text-3xl sm:text-6xl font-semibold'>Abhi Patel</span>
+        <span className='ml-8 text-3xl sm:text-6xl font-semibold'>{user == null ? "user": `${user.name}`}</span>
       </div>
 
       <div className="info p-2 ">
         <div>
-          <span>Email :</span>
-          <span> abhi@gmail.com</span>
+          <span>Email : </span>
+          <span> {user == null ? "user": `${user.email}`}</span>
         </div>
         <div>
           <span>Member :</span>

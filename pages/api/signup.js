@@ -15,10 +15,11 @@ const handler = async(req, res) => {
 
         }else{
             const {name, email, password} = req.body
-            let user = new User({name, email, password:CryptoJS.AES.encrypt(password, "secretKey123").toString() })
-            await user.save();
+            let userr = new User({name, email, password:CryptoJS.AES.encrypt(password, "secretKey123").toString() })
+            await userr.save();
+            const user = {email:email, name:name};
     
-            res.status(200).json({success: "successful registration" })
+            res.status(200).json({success: "successful registration", user })
         }
 
        

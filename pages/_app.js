@@ -14,8 +14,10 @@ function MyApp({ Component, pageProps }) {
 
   const router = useRouter()
   
+  
   const [progress, setProgress] = useState(0)
   const [user, setUser] = useState({value: null})
+  
 
   const [isFooter, setIsFooter] = useState(true);
 
@@ -23,13 +25,18 @@ function MyApp({ Component, pageProps }) {
     if(router.pathname === '/admin' || router.pathname === '/admin/dashboard' ){
       setIsFooter(false)
     }
+    if(user.value == null){
+    if(router.pathname === '/profile'){
+      router.push('login')
+    }}
   }, []);
  
  
 
   useEffect(() => {
-   const token = localStorage.getItem('A1NextProfile')
+   let token = localStorage.getItem('A1NextProfile')
    if(token){
+    token = JSON.parse(token)
       setUser({value:token})
    }else{
     setUser({value:null})
@@ -63,7 +70,7 @@ function MyApp({ Component, pageProps }) {
         onLoaderFinished={() => setProgress(0)}
         />
       <Navbar user={user}/>
-      <Component {...pageProps} />
+      <Component {...pageProps} user={user.value} />
       {
         isFooter ? <Footer/> : ""
       }

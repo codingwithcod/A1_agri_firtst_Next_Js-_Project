@@ -65,6 +65,7 @@ export async function getStaticProps() {
   // const post = await resAxios.data
 
   const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/admin/post`)
+  
   const post = await res.json();
   
 

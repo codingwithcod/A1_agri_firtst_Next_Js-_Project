@@ -34,7 +34,10 @@ const Navbar = ({user}) => {
                         <hr />
                         <Link href='/about'><a> <li onClick={() => setOpenMenu(false)} >About</li></a></Link>
                         <hr />
-                        <Link href='/profile'><a> <li onClick={() => setOpenMenu(false)} >Profile</li></a></Link>
+                        {
+                        (user.value===null) ? <Link href='/login'><a ><li onClick={() => setOpenMenu(false)} >Login</li></a></Link> :
+                        <Link href='/profile'><a><li onClick={() => setOpenMenu(false)} >Profile</li></a></Link>
+                        }
                     </ul>
                     <Link href='/'>
                     <div onClick={()=> setOpenMenu(false)} className='bottom-logo absolute bottom-[1.5rem] left-3 '>

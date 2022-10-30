@@ -49,9 +49,12 @@ const Login = () => {
 
 
           let response = await res.data
+          let user = JSON.stringify(response.user)
 
-          console.log(response);
+          // console.log(response);
           if(response.success){
+           
+            localStorage.setItem('A1NextProfile', user)
             toast.success(response.success, {
               position: "top-left",
               autoClose: 2000,
@@ -61,6 +64,10 @@ const Login = () => {
               draggable: true,
               progress: undefined,
               });
+
+              setTimeout(() => {
+                router.push("/")
+              }, 1000);
   
           }
           else if(response.error){
@@ -95,11 +102,12 @@ const Login = () => {
       // let response = await res.json();
 
       let response = await res.data
+      let user = JSON.stringify(response.user)
 
 
       // console.log(response);
       if(response.success){
-          localStorage.setItem('A1NextProfile', response.token )
+          localStorage.setItem('A1NextProfile', user)
           // localStorage.setItem('A1NextProfile', response.user.json())
           
 

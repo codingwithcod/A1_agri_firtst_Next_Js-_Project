@@ -10,7 +10,7 @@ import { useRouter } from 'next/router';
 
 
 
-const Dashboard = ({books, quiz, post}) => {
+const Dashboard = ({books, quiz, post, users}) => {
 
  
 
@@ -81,7 +81,7 @@ const Dashboard = ({books, quiz, post}) => {
         (toggelPage=='AddBooks') ?  <AddBook books={books} /> : ""
       }
       {
-        (toggelPage=='AddUser') ?  <AddUser/> : ""
+        (toggelPage=='AddUser') ?  <AddUser users={users} /> : ""
       }
       {
         (toggelPage=='Analytics') ?  <Analytics/> : ""
@@ -150,12 +150,15 @@ export async function getServerSideProps() {
     const quiz = await resQuiz.json()
     const resPost = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/admin/post/`)
     const post = await resPost.json()
+    const resUser = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/user/`)
+    const users = await resUser.json()
   
     return {
       props: {
         books,
         quiz,
-        post
+        post,
+        users
       }
     }
 

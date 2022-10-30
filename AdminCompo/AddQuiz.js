@@ -64,7 +64,6 @@ const AddQuiz = ({quiz}) => {
   }
 
   const ResetForm = () => {
-    console.log("reset Run........");
     setQuizForEdit()
   }
 
@@ -99,6 +98,9 @@ const AddQuiz = ({quiz}) => {
         <AddQuizCompo quizForEdit={quizForEdit} isEdit={isEdit}/>
       ) : (
         <div className="quizCard  p-2 m-2 ">
+
+        
+
         {
           quiz.map((curQuiz, ind) => {
 

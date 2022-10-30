@@ -23,9 +23,9 @@ const handler = async(req, res) => {
                 const token = jwt.sign({email:userfind.email, name:userfind.name}, 'jwtSecret', {
                     expiresIn: '1000'
                 })
-               const user = [{email:userfind.email, name:userfind.name}];
+               const user = {email:userfind.email, name:userfind.name};
 
-                res.status(200).json({success: "successful login", token, user  })
+                res.status(200).json({success: "successful login",  user  })
             }
             else{
                 res.status(400).json({error: "Invalid crediantial",  })
