@@ -25,8 +25,8 @@ function MyApp({ Component, pageProps }) {
     if(router.pathname === '/admin' || router.pathname === '/admin/dashboard' ){
       setIsFooter(false)
     }
-    if(user.value == null){
     if(router.pathname === '/profile'){
+    if(user.value == null){
       router.push('login')
     }}
   }, []);
